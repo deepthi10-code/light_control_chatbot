@@ -1,5 +1,5 @@
-!pip install adafruit-io
-!pip install python-telegram-bot
+#!pip install adafruit-io
+#!pip install python-telegram-bot
 import os
 x = "deepthi_10" #ADAFRUIT_IO_USERNAME
 y = os.getenv('y') #ADAFRUIT_IO_KEY
