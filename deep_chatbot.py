@@ -1,4 +1,4 @@
-python setup.py install
+
 pip3 install adafruit-io
 $ pip install python-telegram-bot
 import os
