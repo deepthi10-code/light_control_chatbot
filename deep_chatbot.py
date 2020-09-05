@@ -2,16 +2,16 @@ python setup.py install
 pip3 install adafruit-io
 $ pip install python-telegram-bot
 import os
-x = "deepthi_10" #ADAFRUIT_IO_USERNAME
-y = os.getenv('y') #ADAFRUIT_IO_KEY
-from .model import Client, Feed
+x = 'YOUR_AIO_USERNAME' #ADAFRUIT_IO_USERNAME
+y = 'YOUR_AIO_KEY' #ADAFRUIT_IO_KEY
+from Adafruit_IO import Client, Feed
 aio = Client(x,y)
  
 #create feed
 new= Feed(name='ledbot')
 result= aio.create_feed(new)
 
-from .model import Data
+from Adafruit_IO  import Data
 from telegram.ext import Updater, CommandHandler
 import requests  # Getting the data from the cloud
 
