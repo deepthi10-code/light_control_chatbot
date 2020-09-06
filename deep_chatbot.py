@@ -8,7 +8,7 @@ from Adafruit_IO import Client, Feed
 aio = Client(YOUR_AIO_USERNAME,YOUR_AIO_KEY)
   
 #create feed
-new= Feed(name='ledbot')
+new= Feed(name='ledbot') 
 result= aio.create_feed(new)
 
 from Adafruit_IO  import Data
