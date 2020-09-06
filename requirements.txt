@@ -1,5 +1,4 @@
 requests
 python-telegram-bot
 adafruit-io
-os
 telegram.ext
