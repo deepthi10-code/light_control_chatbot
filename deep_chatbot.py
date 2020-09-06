@@ -9,7 +9,7 @@ aio = Client(YOUR_AIO_USERNAME,YOUR_AIO_KEY)
   
 #create feed
 new= Feed(name='ledbot') 
-result= aio.create_feed(new)
+result= aio.create_feed(new) 
 
 from Adafruit_IO  import Data
 from telegram.ext import Updater, CommandHandler , MessageHandler, Filters,CallbackContext
