@@ -1,1 +1,6 @@
 requests
+python-telegram-bot
+python bot.py
+adafruit-io
+os
+telegram.ext
