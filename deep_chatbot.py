@@ -1,10 +1,6 @@
 #pip3 install python-telegram-bot
 #python3 -m pip install python-telegram-bot
-git clone https://github.com/python-telegram-bot/python-telegram-bot
 
-python setup.py install
-
-git submodule update --init --recursive
 
 pip install adafruit-io==1.1.0
 import os
