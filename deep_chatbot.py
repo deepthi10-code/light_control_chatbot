@@ -1,5 +1,7 @@
-sudo pip install python-telegram-bot --upgrade
-sudo pip3 install adafruit-io
+pip install python-telegram-bot 
+python bot.py
+python setup.py install
+pip3 install adafruit-io
 
 import os
 YOUR_AIO_USERNAME = os.getenv('YOUR_AIO_USERNAME')  #ADAFRUIT_IO_USERNAME
