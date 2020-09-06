@@ -14,7 +14,7 @@ new= Feed(name='ledbot')
 result= aio.create_feed(new)
 
 from Adafruit_IO  import Data
-from telegram.ext import Updater, CommandHandler
+from telegram.ext import Updater, CommandHandler , MessageHandler
 import requests  # Getting the data from the cloud
 
 def start(bot,update):
