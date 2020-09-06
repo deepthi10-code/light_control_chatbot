@@ -1,11 +1,11 @@
-$ pip install python-telegram-bot --upgrade
+sudo pip install python-telegram-bot --upgrade
 sudo pip3 install adafruit-io
 
 import os
-x = 'YOUR_AIO_USERNAME' #ADAFRUIT_IO_USERNAME
-y = 'YOUR_AIO_KEY' #ADAFRUIT_IO_KEY
+YOUR_AIO_USERNAME = os.getenv('YOUR_AIO_USERNAME')  #ADAFRUIT_IO_USERNAME
+YOUR_AIO_KEY = os.getenv('YOUR_AIO_KEY') #ADAFRUIT_IO_KEY
 from Adafruit_IO import Client, Feed
-aio = Client(x,y)
+aio = Client(YOUR_AIO_USERNAME,YOUR_AIO_KEY)
  
 #create feed
 new= Feed(name='ledbot')
@@ -37,7 +37,8 @@ def led_on(bot,update):
     bot.send_photo(chat_id,photo='https://www.freeiconspng.com/thumbs/lightbulb-png/light-bulb-png-bulb-png1247-12.png')
     bot.send_message(chat_id=chat_id, text="light turned on")
 
-u = Updater("BOT_TOKEN", use_context=True)
+BOT_TOKEN= os.getenv('BOT_TOKEN')
+u = Updater(BOT_TOKEN, use_context=True)
 dp = u.dispatcher
 dp.add_handler(CommandHandler('start',start))
 dp.add_handler(CommandHandler('led_off',led_off))
