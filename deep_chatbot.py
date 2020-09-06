@@ -1,5 +1,5 @@
 import os
-import sys
+
 YOUR_AIO_USERNAME = os.getenv('YOUR_AIO_USERNAME')  #ADAFRUIT_IO_USERNAME
 YOUR_AIO_KEY = os.getenv('YOUR_AIO_KEY') #ADAFRUIT_IO_KEY
 from Adafruit_IO import Client, Feed
@@ -23,7 +23,7 @@ def log_error(func):
 
     return wrapper
 
-def start(bot: Update, update: CallbackContext):
+def start(bot,update):
     update.message.reply_text('Hi, IM LED CONTROL CHATBOT')
     update.message.reply_text('type /led_on to turn on the bulb')
     update.message.reply_text('type /led_off to turn on the bulb')
