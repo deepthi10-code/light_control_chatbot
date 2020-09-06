@@ -12,8 +12,12 @@ new= Feed(name='ledbot')
 result= aio.create_feed(new)
 
 from Adafruit_IO  import Data
-from telegram.ext import Updater, CommandHandler , MessageHandler
+from telegram.ext import Updater, CommandHandler , MessageHandler, Filters,CallbackContext
 import requests  # Getting the data from the cloud
+
+def message_handler(update: Update, context: CallbackContext):
+    update.message.reply_text(text='Example')
+
 
 def start(bot,update):
     update.message.reply_text('Hi, IM LED CONTROL CHATBOT')
@@ -42,6 +46,8 @@ dp = u.dispatcher
 dp.add_handler(CommandHandler('start',start))
 dp.add_handler(CommandHandler('led_off',led_off))
 dp.add_handler(CommandHandler('led_on',led_on))
+dp.add_handler(MessageHandler(filters=Filters.all, callback=message_handler))
+
 u.start_polling()
 u.idle()
  
