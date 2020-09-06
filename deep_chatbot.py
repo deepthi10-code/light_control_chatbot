@@ -13,16 +13,6 @@ from Adafruit_IO  import Data
 from telegram.ext import Updater, CommandHandler 
 import requests  # Getting the data from the cloud
 
-def log_error(func):
-    def wrapper(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
-        except Exception as exc:
-            print(f'Error: {exc}')
-            raise exc
-
-    return wrapper
-
 def start(bot,update):
     update.message.reply_text('Hi, IM LED CONTROL CHATBOT')
     update.message.reply_text('type /led_on to turn on the bulb')
