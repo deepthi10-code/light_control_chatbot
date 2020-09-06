@@ -23,7 +23,7 @@ def log_error(func):
 
     return wrapper
 
-def start(u: Update, update: CallbackContext):
+def start(bot: Update, update: CallbackContext):
     update.message.reply_text('Hi, IM LED CONTROL CHATBOT')
     update.message.reply_text('type /led_on to turn on the bulb')
     update.message.reply_text('type /led_off to turn on the bulb')
