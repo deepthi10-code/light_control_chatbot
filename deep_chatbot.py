@@ -15,7 +15,7 @@ from Adafruit_IO  import Data
 from telegram.ext import Updater, CommandHandler , MessageHandler, Filters,CallbackContext
 import requests  # Getting the data from the cloud
 
-def message_handler(update: Update, context: CallbackContext):
+def message_handler( bot, update: CallbackContext):
     update.message.reply_text(text='Example')
 
 
