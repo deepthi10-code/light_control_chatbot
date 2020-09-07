@@ -1,4 +1,6 @@
+import logging
 import os
+from Adafruit_IO  import Data
 
 YOUR_AIO_USERNAME = os.getenv('YOUR_AIO_USERNAME')  #ADAFRUIT_IO_USERNAME
 YOUR_AIO_KEY = os.getenv('YOUR_AIO_KEY') #ADAFRUIT_IO_KEY
@@ -9,9 +11,13 @@ aio = Client(YOUR_AIO_USERNAME,YOUR_AIO_KEY)
 new= Feed(name='ledbot') 
 result= aio.create_feed(new) 
 
-from Adafruit_IO  import Data
-from telegram.ext import Updater, CommandHandler 
-import requests  # Getting the data from the cloud
+ # Getting the data from the cloud
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
+
+logger = logging.getLogger(__name__)
+from telegram.ext import Updater, CommandHandler,MessageHandler, Filters 
+import requests 
 
 def start(bot,update):
     update.message.reply_text('Hi, IM LED CONTROL CHATBOT')
@@ -33,13 +39,25 @@ def led_on(bot,update):
     bot.send_message(chat_id=chat_id, text='light is turning on')
     bot.send_photo(chat_id,photo='https://www.freeiconspng.com/thumbs/lightbulb-png/light-bulb-png-bulb-png1247-12.png')
     bot.send_message(chat_id=chat_id, text='light turned on')
+    
+def echo(bot, update):
+    """Echo the user message."""
+    update.message.reply_text(update.message.text)
 
-BOT_TOKEN= os.getenv('BOT_TOKEN')
-u = Updater(BOT_TOKEN, use_context=True)
-dp = u.dispatcher
-dp.add_handler(CommandHandler('start',start))
-dp.add_handler(CommandHandler('led_off',led_off))
-dp.add_handler(CommandHandler('led_on',led_on))
-u.start_polling()
-u.idle()
+
+def main():
+  BOT_TOKEN= os.getenv("BOT_TOKEN")
+  u = Updater(BOT_TOKEN, use_context=True)
+  dp = u.dispatcher
+  dp.add_handler(CommandHandler("start",start))
+  dp.add_handler(CommandHandler("led_off",led_off))
+  dp.add_handler(CommandHandler("led_on",led_on))
+  dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
+  u.start_polling()
+  u.idle()
+ 
+  
+if __name__ == '__main__':
+    main()
+    
  
