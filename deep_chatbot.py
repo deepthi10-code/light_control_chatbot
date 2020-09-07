@@ -22,7 +22,7 @@ import requests #Getting the data from the cloud
 def start(bot,update):
     bot.message.reply_text('HI, IM LIGHT CONTROL CHATBOT')
     bot.message.reply_text('type /led_on to turn on the bulb')
-    bot.message.reply_text('type /led_off to turn on the bulb')
+    bot.message.reply_text('type /led_off to turn off the bulb')
     
 def led_off(bot,update):
     value = Data(value=0) #Sending a value to a feed
@@ -55,7 +55,3 @@ def main():
  
 if __name__ == '__main__':
     main()
-    
- 
-    
- 
