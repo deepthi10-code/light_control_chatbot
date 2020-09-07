@@ -1,7 +1,7 @@
 import logging
 import os 
-from Adafruit_IO  import Data
 
+from Adafruit_IO  import Data
 YOUR_AIO_USERNAME = os.getenv('YOUR_AIO_USERNAME')  #ADAFRUIT_IO_USERNAME
 YOUR_AIO_KEY = os.getenv('YOUR_AIO_KEY') #ADAFRUIT_IO_KEY
 from Adafruit_IO import Client, Feed
@@ -38,9 +38,9 @@ def led_on(bot,update):
     bot.message.reply_text('light is turning on')
     update.bot.sendPhoto(chat_id=chat_id, photo="https://www.freeiconspng.com/thumbs/lightbulb-png/light-bulb-png-bulb-png1247-12.png", caption="light turned on")
     
-'''def echo(bot, update):
-    """Echo the user message."""
-    bot.message.reply_text(bot.message.text)'''
+def echo(bot, update):
+    #Echo the user message
+    bot.message.reply_text(bot.message.text)
 
 def main():
   BOT_TOKEN= os.getenv("BOT_TOKEN")
@@ -53,7 +53,6 @@ def main():
   u.start_polling()
   u.idle()
  
-  
 if __name__ == '__main__':
     main()
     
