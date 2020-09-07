@@ -8,7 +8,7 @@ from Adafruit_IO import Client, Feed
 aio = Client(YOUR_AIO_USERNAME,YOUR_AIO_KEY) 
   
 #create feed
-new= Feed(name='ledbot') 
+new= Feed(name='chatbot') 
 result= aio.create_feed(new) 
 
 #logging exception handler
@@ -18,25 +18,18 @@ logger = logging.getLogger(__name__)
 
 from telegram.ext import Updater, CommandHandler,MessageHandler, Filters 
 import requests #Getting the data from the cloud
-
-def start(bot,update):
-    bot.message.reply_text('HI, IM LED CONTROL CHATBOT')
-    bot.message.reply_text('type /led_on to turn on the bulb')
-    bot.message.reply_text('type /led_off to turn on the bulb')
     
-def led_off(bot,update):
+def ledoff(bot,update):
     value = Data(value=0) #Sending a value to a feed
-    value_send = aio.create_data('ledbot',value)
+    value_send = aio.create_data('chatbot',value)
     chat_id = bot.message.chat_id
-    bot.message.reply_text('light is turning off')
-    update.bot.sendPhoto(chat_id=chat_id, photo="https://toppng.com/uploads/preview/light-bulb-on-off-png-11553940208oq66nq8jew.png", caption="light turned off")
+    update.bot.sendPhoto(chat_id=chat_id, photo="https://pp.netclipart.com/pp/s/147-1471460_graphic-freeuse-download-light-clipart-black-and-white.png", caption= "light off")
     
-def led_on(bot,update):
+def ledon(bot,update):
     value = Data(value=1)
-    value_send = aio.create_data('ledbot',value)
+    value_send = aio.create_data('chatbot',value)
     chat_id = bot.message.chat_id
-    bot.message.reply_text('light is turning on')
-    update.bot.sendPhoto(chat_id=chat_id, photo="https://www.freeiconspng.com/thumbs/lightbulb-png/light-bulb-png-bulb-png1247-12.png", caption="light turned on")
+    update.bot.sendPhoto(chat_id=chat_id, photo="https://toppng.com/uploads/preview/light-bulb-on-off-png-11553940194wdc9uy3j5o.png", caption="light on")
     
 def echo(bot, update):
     #Echo the user message
@@ -46,9 +39,8 @@ def main():
   BOT_TOKEN= os.getenv("BOT_TOKEN")
   u = Updater(BOT_TOKEN, use_context=True)
   dp = u.dispatcher
-  dp.add_handler(CommandHandler("start",start))
-  dp.add_handler(CommandHandler("led_off",led_off))
-  dp.add_handler(CommandHandler("led_on",led_on))
+  dp.add_handler(CommandHandler("ledoff",ledoff))
+  dp.add_handler(CommandHandler("ledon",ledon))
   dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
   u.start_polling()
   u.idle()
