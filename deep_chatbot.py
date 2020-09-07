@@ -29,7 +29,8 @@ def led_off(bot,update):
     value_send = aio.create_data('ledbot',value)
     chat_id = bot.message.chat_id
     bot.message.reply_text('light is turning off')
-    bot.sendPhoto(chat_id=chat_id,photo='https://toppng.com/uploads/preview/light-bulb-on-off-png-11553940208oq66nq8jew.png')
+    file_id='https://toppng.com/uploads/preview/light-bulb-on-off-png-11553940208oq66nq8jew.png'
+    bot.sendPhoto(chat_id=chat_id,photo=file_id)
     bot.message.reply_text('light turned off')
 
 def led_on(bot,update):
