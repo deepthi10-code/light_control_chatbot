@@ -1,5 +1,5 @@
 import logging
-import os
+import os 
 from Adafruit_IO  import Data
 
 YOUR_AIO_USERNAME = os.getenv('YOUR_AIO_USERNAME')  #ADAFRUIT_IO_USERNAME
