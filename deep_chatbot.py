@@ -11,13 +11,13 @@ aio = Client(YOUR_AIO_USERNAME,YOUR_AIO_KEY)
 new= Feed(name='ledbot') 
 result= aio.create_feed(new) 
 
- # Getting the data from the cloud
+#logging exception handler
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
-
 logger = logging.getLogger(__name__)
+
 from telegram.ext import Updater, CommandHandler,MessageHandler, Filters 
-import requests 
+import requests #Getting the data from the cloud
 
 def start(bot,update):
     bot.message.reply_text('HI, IM LED CONTROL CHATBOT')
@@ -29,29 +29,18 @@ def led_off(bot,update):
     value_send = aio.create_data('ledbot',value)
     chat_id = bot.message.chat_id
     bot.message.reply_text('light is turning off')
-    #file_id='https://toppng.com/uploads/preview/light-bulb-on-off-png-11553940208oq66nq8jew.png'
-    #bot.send_photo(chat_id=chat_id,photo=file_id)
-    '''send_photo(chat_id, file_id, caption=None, disable_notification=False, reply_to_message_id=None, reply_markup=None, timeout=20, parse_mode=None, **kwargs)
-    bot.message.reply_text('light turned off')'''
     update.bot.sendPhoto(chat_id=chat_id, photo="https://toppng.com/uploads/preview/light-bulb-on-off-png-11553940208oq66nq8jew.png", caption="light turned off")
     
-    
-
 def led_on(bot,update):
     value = Data(value=1)
     value_send = aio.create_data('ledbot',value)
     chat_id = bot.message.chat_id
     bot.message.reply_text('light is turning on')
-    #file_id='https://www.freeiconspng.com/thumbs/lightbulb-png/light-bulb-png-bulb-png1247-12.png'
-    #send_photo(chat_id, file_id, caption=None, disable_notification=False, reply_to_message_id=None, reply_markup=None, timeout=20, parse_mode=None, **kwargs)
-    #bot.message.reply_text('light turned on')
-    
     update.bot.sendPhoto(chat_id=chat_id, photo="https://www.freeiconspng.com/thumbs/lightbulb-png/light-bulb-png-bulb-png1247-12.png", caption="light turned on")
     
-def echo(bot, update):
+'''def echo(bot, update):
     """Echo the user message."""
-    bot.message.reply_text(bot.message.text)
-
+    bot.message.reply_text(bot.message.text)'''
 
 def main():
   BOT_TOKEN= os.getenv("BOT_TOKEN")
