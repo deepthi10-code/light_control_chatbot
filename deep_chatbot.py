@@ -20,9 +20,9 @@ from telegram.ext import Updater, CommandHandler,MessageHandler, Filters
 import requests 
 
 def start(bot,update):
-    update.message.reply_text('Hi, IM LED CONTROL CHATBOT')
-    update.message.reply_text('type /led_on to turn on the bulb')
-    update.message.reply_text('type /led_off to turn on the bulb')
+    bot.message.reply_text('Hi, IM LED CONTROL CHATBOT')
+    bot.message.reply_text('type /led_on to turn on the bulb')
+    bot.message.reply_text('type /led_off to turn on the bulb')
     
 def led_off(bot,update):
     value = Data(value=0) #Sending a value to a feed
@@ -42,7 +42,7 @@ def led_on(bot,update):
     
 def echo(bot, update):
     """Echo the user message."""
-    update.message.reply_text(update.message.text)
+    bot.message.reply_text(bot.message.text)
 
 
 def main():
