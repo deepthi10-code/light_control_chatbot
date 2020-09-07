@@ -20,7 +20,7 @@ from telegram.ext import Updater, CommandHandler,MessageHandler, Filters
 import requests 
 
 def start(bot,update):
-    bot.message.reply_text('Hi, IM LED CONTROL CHATBOT')
+    bot.message.reply_text('HI, IM LED CONTROL CHATBOT')
     bot.message.reply_text('type /led_on to turn on the bulb')
     bot.message.reply_text('type /led_off to turn on the bulb')
     
@@ -29,16 +29,16 @@ def led_off(bot,update):
     value_send = aio.create_data('ledbot',value)
     chat_id = bot.message.chat_id
     bot.message.reply_text('light is turning off')
-    bot.send_photo(chat_id,photo='https://toppng.com/uploads/preview/light-bulb-on-off-png-11553940208oq66nq8jew.png')
+    bot.sendPhoto(chat_id=chat_id,photo='https://toppng.com/uploads/preview/light-bulb-on-off-png-11553940208oq66nq8jew.png')
     bot.message.reply_text('light turned off')
 
 def led_on(bot,update):
     value = Data(value=1)
     value_send = aio.create_data('ledbot',value)
     chat_id = bot.message.chat_id
-    bot.send_message(chat_id=chat_id, text='light is turning on')
-    bot.send_photo(chat_id,photo='https://www.freeiconspng.com/thumbs/lightbulb-png/light-bulb-png-bulb-png1247-12.png')
-    bot.send_message(chat_id=chat_id, text='light turned on')
+    bot.message.reply_text('light is turning on')
+    bot.sendPhoto(chat_id=chat_id,photo='https://www.freeiconspng.com/thumbs/lightbulb-png/light-bulb-png-bulb-png1247-12.png')
+    bot.message.reply_text('light turned on')
     
 def echo(bot, update):
     """Echo the user message."""
